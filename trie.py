@@ -1,7 +1,8 @@
 class TrieNode:
-    node_list = [None]*26
-    complete_word = False
-    
+
+    def __init__(self):
+        self.node_list = [None]*26
+        self.complete_word = False    
 
 class Trie:
 
@@ -22,12 +23,12 @@ class Trie:
         i = 0
         while i < len(word):
             if not node.node_list[ord(word[i]) - ord('a')]:
-                node = TrieNode()
-                node.node_list[ord(word[i]) - ord('a')] = node
+                child_node = TrieNode()
+                node.node_list[ord(word[i]) - ord('a')] = child_node
+                node = child_node
             else:
                 node = node.node_list[ord(word[i]) - ord('a')]
             i += 1
-
         node.complete_word = True
 
         
@@ -70,9 +71,13 @@ class Trie:
 
 trie = Trie()
 
-# trie.insert("apple")
-# trie.search("apple")
-# print(trie.search("app"))
+print(trie.insert("apple"))
+print(trie.search("apple"))
+print(trie.search("app"))
 print(trie.startsWith("a"))
-# trie.insert("app")  
-# trie.search("app")
+print(trie.insert("app"))
+print(trie.search("app"))
+
+trie = Trie()
+print(trie.root.node_list)
+print(trie.startsWith("a"))
