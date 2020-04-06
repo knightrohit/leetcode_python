@@ -1,3 +1,4 @@
+#PreOrder
 class Node:
     def __init__(self, val = None, childern = []):
         self.val = val
