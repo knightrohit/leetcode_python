@@ -1,4 +1,4 @@
-#Recursion
+#Recursion solution
 class Solution:
     def postorder(self, root: 'Node') -> List[int]:
         if not root:
@@ -21,3 +21,20 @@ class Solution:
             self.out.append(node.val)
         else:
             self.out.append(node.val)
+
+
+#Iteration solution
+class Solution:
+    def postorder(self, root: 'Node') -> List[int]:
+        if not root:
+            return []
+        
+        stack, out  = [root], []
+        
+        while stack:
+            node = stack.pop()
+            out.append(node.val)
+            for c in node.children:
+                stack.append(c)
+            
+        return out[::-1]
